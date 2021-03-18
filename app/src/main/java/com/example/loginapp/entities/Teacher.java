@@ -2,6 +2,7 @@ package com.example.loginapp.entities;
 
 import com.example.loginapp.enums.Gender;
 import com.example.loginapp.enums.Member_Type;
+import com.example.loginapp.enums.Nationality;
 import com.example.loginapp.enums.User_Type;
 
 public class Teacher extends User{
@@ -14,11 +15,16 @@ public class Teacher extends User{
     public Teacher(){}
 
     // Overloading Constructor
-    public Teacher(String username, User_Type user_type, Gender gender, String position, Member_Type member_type, String join_date){
-        super(username, user_type, gender); // Parent Constructor Call
+    public Teacher(String username, String firstname, String lastname, User_Type user_type, Gender gender, Nationality nationality, String position, Member_Type member_type, String join_date){
+        super(username, firstname, lastname, user_type, gender, nationality); // Parent Constructor Call
         this.position = position;
         this.member_type = member_type;
         this.join_date = join_date;
+    }
+
+    public Teacher(Teacher teacher){
+        this(teacher.username, teacher.firstname, teacher.lastname, teacher.user_type, teacher.gender, teacher.nationality, teacher.position, teacher.member_type, teacher.join_date);
+
     }
 
     // Getter and Setter

@@ -8,18 +8,27 @@ public class User {
 
     // User Properties
     protected String username;
-    protected User_Type userType;
-    protected Gender userGender;
+    protected String firstname;
+    protected String lastname;
+    protected User_Type user_type;
+    protected Gender gender;
     protected Nationality nationality;
 
     // Default Constructor
     public User() {}
 
     // Other Constructors (Overloading)
-    public User(String username, User_Type userType, Gender userGender){
+    public User(String username, String firstname, String lastname, User_Type user_type, Gender userGender, Nationality nationality){
         this.username = username;
-        this.userType = userType;
-        this.userGender = userGender;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.user_type = user_type;
+        this.gender = userGender;
+        this.nationality = nationality;
+    }
+
+    public User(User user){
+        this(user.username, user.firstname, user.lastname, user.user_type, user.gender, user.nationality);
     }
 
     // Getters and Setters
@@ -28,11 +37,11 @@ public class User {
     }
 
     public User_Type getUserType(){
-        return this.userType;
+        return this.user_type;
     }
 
     public Gender getUserGender(){
-        return this.userGender;
+        return this.gender;
     }
 
     public Nationality getNationality(){
@@ -44,12 +53,12 @@ public class User {
         this.username = username;
     }
 
-    public void setUserType(User_Type userType){
-        this.userType = userType;
+    public void setUserType(User_Type user_type){
+        this.user_type = user_type;
     }
 
-    public void setUserGender(Gender userGender){
-        this.userGender = userGender;
+    public void setUserGender(Gender gender){
+        this.gender = gender;
     }
     public void setNationality(Nationality nationality){
         this.nationality = nationality;
