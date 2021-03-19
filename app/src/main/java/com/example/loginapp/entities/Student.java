@@ -1,5 +1,7 @@
 package com.example.loginapp.entities;
 
+import androidx.annotation.NonNull;
+
 import com.example.loginapp.enums.Course;
 import com.example.loginapp.enums.Gender;
 import com.example.loginapp.enums.Member_Type;
@@ -60,6 +62,11 @@ public class Student extends User{
         this.cca = cca;
     }
 
+    @NonNull
+    @Override
+    public String toString(){
+        return String.format("%sCourse: %s\nCCA: %s\nEnrol Date: %s\n", super.toString(), course, cca, enrol_date);
+    }
 
 
 }
