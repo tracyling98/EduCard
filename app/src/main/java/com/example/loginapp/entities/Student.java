@@ -2,12 +2,16 @@ package com.example.loginapp.entities;
 
 import com.example.loginapp.enums.Course;
 import com.example.loginapp.enums.Gender;
+import com.example.loginapp.enums.Member_Type;
 import com.example.loginapp.enums.Nationality;
 import com.example.loginapp.enums.Study_Year;
 import com.example.loginapp.enums.User_Type;
 
+import java.lang.reflect.Member;
+
 public class Student extends User{
 
+    private Member_Type member_type;
     private Course course;
     private String enrol_date;
 //    private Study_Year studyYear;
@@ -18,15 +22,16 @@ public class Student extends User{
     public Student(){}
 
     // Constructor Overloading
-    public Student(String username, String firstname, String lastname, User_Type user_type, Gender gender, Nationality nationality, Course course, String enrol_date, CCA cca){
-        super(username, firstname,lastname, user_type, gender, nationality); // Parent Constructor Call
+    public Student(String username, String firstname, String lastname, User_Type user_type, Gender gender, Nationality nationality, Member_Type member_type, Course course, String enrol_date, CCA cca){
+        super(username, firstname,lastname, user_type, gender, nationality, member_type); // Parent Constructor Call
         this.course = course;
         this.enrol_date = enrol_date;
         this.cca = cca;
     }
 
     public Student(Student student){
-        this(student.username, student.firstname, student.lastname, student.user_type, student.gender, student.nationality, student.course, student.enrol_date, student.cca);
+        this(student.username, student.firstname, student.lastname, student.user_type, student.gender,
+                student.nationality, student.member_type, student.course, student.enrol_date, student.cca);
     }
 
 
