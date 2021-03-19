@@ -1,5 +1,7 @@
 package com.example.loginapp.entities;
 
+import androidx.annotation.NonNull;
+
 public class Module {
 
     private String module_code;
@@ -39,5 +41,11 @@ public class Module {
 
     public void setModule_description(String module_description){
         this.module_description = module_description;
+    }
+
+    @NonNull
+    public String toString(){
+        return String.format("Module Name: %s\nModule Code: %s\nModule Description: %s\n",
+                module_name, module_code, module_description);
     }
 }
