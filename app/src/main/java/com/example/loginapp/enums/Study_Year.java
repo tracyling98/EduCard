@@ -1,17 +1,18 @@
 package com.example.loginapp.enums;
 
+/* Only year 1 - 3 for this case */
 public enum Study_Year {
-    Year1("Year 1"),
-    Year2("Year 2"),
-    Year3("Year 3");
+    Year1(1),
+    Year2(2),
+    Year3(3);
 
-    private final String yearName;
+    private final int yearName;
 
-    Study_Year(String yearName){
+    Study_Year(int yearName){
         this.yearName = yearName;
     }
 
-    public String getYearName(){
+    public int getYearName(){
         return yearName;
     }
 }
