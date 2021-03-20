@@ -1,4 +1,4 @@
-package com.example.loginapp.testinfo;
+package com.example.educard.testinfo;
 
 // Credentials Class (Without Database Comparison) -- For Testing
 public class Credentials {

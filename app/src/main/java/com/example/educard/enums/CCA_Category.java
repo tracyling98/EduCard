@@ -1,4 +1,4 @@
-package com.example.loginapp.enums;
+package com.example.educard.enums;
 
 
 // 4 Main Categories

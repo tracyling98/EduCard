@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".boundaries.RegistrationPage">
+    tools:context="com.example.educard.boundaries.RegistrationPage">
 
     <TextView
         android:id="@+id/tvRegister"

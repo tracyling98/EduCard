@@ -1,6 +1,6 @@
-package com.example.loginapp.entities;
+package com.example.educard.entities;
 
-import com.example.loginapp.enums.CCA_Category;
+import com.example.educard.enums.CCA_Category;
 
 public class CCA {
 

@@ -1,12 +1,12 @@
-package com.example.loginapp.entities;
+package com.example.educard.entities;
 
 import androidx.annotation.NonNull;
 
-import com.example.loginapp.enums.Course;
-import com.example.loginapp.enums.Gender;
-import com.example.loginapp.enums.Member_Type;
-import com.example.loginapp.enums.Country;
-import com.example.loginapp.enums.User_Type;
+import com.example.educard.enums.Country;
+import com.example.educard.enums.Course;
+import com.example.educard.enums.Gender;
+import com.example.educard.enums.Member_Type;
+import com.example.educard.enums.User_Type;
 
 public class Student extends User{
 

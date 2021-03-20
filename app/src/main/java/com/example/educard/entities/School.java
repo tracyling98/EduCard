@@ -1,8 +1,8 @@
-package com.example.loginapp.entities;
+package com.example.educard.entities;
 
 import androidx.annotation.NonNull;
 
-import com.example.loginapp.enums.Country;
+import com.example.educard.enums.Country;
 
 public class School {
 

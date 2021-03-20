@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginApp">
-        <activity android:name=".boundaries.RegistrationPage"></activity>
-        <activity android:name=".boundaries.HomePage" />
-        <activity android:name=".boundaries.LoginPage">
+        <activity android:name="com.example.educard.boundaries.RegistrationPage"></activity>
+        <activity android:name="com.example.educard.boundaries.HomePage" />
+        <activity android:name="com.example.educard.boundaries.LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

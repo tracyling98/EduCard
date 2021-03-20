@@ -1,4 +1,4 @@
-package com.example.loginapp.entities;
+package com.example.educard.entities;
 
 import androidx.annotation.NonNull;
 

@@ -1,4 +1,4 @@
-package com.example.loginapp.enums;
+package com.example.educard.enums;
 
 /* Only year 1 - 3 for this case */
 public enum Study_Year {

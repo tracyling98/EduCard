@@ -1,4 +1,4 @@
-package com.example.loginapp.boundaries;
+package com.example.educard.boundaries;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.example.loginapp.enums;
+package com.example.educard.enums;
 
 public enum Course {
     CS_CyberSec("Computer Science (Cyber Security)"),
