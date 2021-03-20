@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.loginapp.R;
+import com.example.educard.R;
 
 public class RegistrationPage extends AppCompatActivity {
 

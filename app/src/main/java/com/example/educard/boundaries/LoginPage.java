@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.educard.testinfo.Credentials;
-import com.example.loginapp.R;
+import com.example.educard.R;
 
 public class LoginPage extends AppCompatActivity {
 

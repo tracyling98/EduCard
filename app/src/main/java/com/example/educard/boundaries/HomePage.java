@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.loginapp.R;
+import com.example.educard.R;
 
 // Show navigation and user profile details in this page
 public class HomePage extends AppCompatActivity {
