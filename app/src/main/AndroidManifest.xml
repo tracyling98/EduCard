@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LoginApp">
-        <activity android:name="com.byteforce_crew.educard.boundaries.RegistrationPage"></activity>
+        android:theme="@style/Theme.EduCard">
+        <activity android:name="com.byteforce_crew.educard.boundaries.RegistrationPage"/>
         <activity android:name="com.byteforce_crew.educard.boundaries.HomePage" />
         <activity android:name="com.byteforce_crew.educard.boundaries.LoginPage">
             <intent-filter>
