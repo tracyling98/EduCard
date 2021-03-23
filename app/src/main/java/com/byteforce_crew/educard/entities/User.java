@@ -11,6 +11,7 @@ public class User {
 
     // User Properties
     protected String username;
+    protected String password;
     protected String firstname;
     protected String lastname;
     protected User_Type user_type;
@@ -22,9 +23,10 @@ public class User {
     public User() {}
 
     // Other Constructors (Overloading)
-    public User(String username, String firstname, String lastname, User_Type user_type, Gender userGender,
+    public User(String username, String password, String firstname, String lastname, User_Type user_type, Gender userGender,
                 Country nationality, Member_Type member_type){
         this.username = username;
+        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.user_type = user_type;
@@ -34,12 +36,16 @@ public class User {
     }
 
     public User(User user){
-        this(user.username, user.firstname, user.lastname, user.user_type, user.gender, user.nationality, user.member_type);
+        this(user.username, user.password, user.firstname, user.lastname, user.user_type, user.gender, user.nationality, user.member_type);
     }
 
     // Getters and Setters
     public String getUsername(){
         return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getFirstname(){
@@ -67,8 +73,13 @@ public class User {
     }
 
     public void setUsername(String username){
+
         // Include some validation before storing the values
         this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 
     public void setFirstname(String firstname){

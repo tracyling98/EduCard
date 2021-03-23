@@ -21,15 +21,15 @@ public class Student extends User{
     public Student(){}
 
     // Constructor Overloading
-    public Student(String username, String firstname, String lastname, User_Type user_type, Gender gender, Country nationality, Member_Type member_type, Course course, String enrol_date, CCA cca){
-        super(username, firstname,lastname, user_type, gender, nationality, member_type); // Parent Constructor Call
+    public Student(String username, String password, String firstname, String lastname, User_Type user_type, Gender gender, Country nationality, Member_Type member_type, Course course, String enrol_date, CCA cca){
+        super(username, password, firstname,lastname, user_type, gender, nationality, member_type); // Parent Constructor Call
         this.course = course;
         this.enrol_date = enrol_date;
         this.cca = cca;
     }
 
     public Student(Student student){
-        this(student.username, student.firstname, student.lastname, student.user_type, student.gender,
+        this(student.username, student.password, student.firstname, student.lastname, student.user_type, student.gender,
                 student.nationality, student.member_type, student.course, student.enrol_date, student.cca);
     }
 

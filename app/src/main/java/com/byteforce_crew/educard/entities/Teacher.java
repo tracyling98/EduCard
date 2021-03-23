@@ -16,16 +16,16 @@ public class Teacher extends User{
     public Teacher(){}
 
     // Overloading Constructor
-    public Teacher(String username, String firstname, String lastname, User_Type user_type, Gender gender,
+    public Teacher(String username, String password, String firstname, String lastname, User_Type user_type, Gender gender,
                    Country nationality, Member_Type member_type, String position, String join_date){
 
-        super(username, firstname, lastname, user_type, gender, nationality, member_type); // Parent Constructor Call
+        super(username, password, firstname, lastname, user_type, gender, nationality, member_type); // Parent Constructor Call
         this.position = position;
         this.join_date = join_date;
     }
 
     public Teacher(Teacher teacher){
-        this(teacher.username, teacher.firstname, teacher.lastname, teacher.user_type,
+        this(teacher.username, teacher.password, teacher.firstname, teacher.lastname, teacher.user_type,
                 teacher.gender, teacher.nationality, teacher.member_type, teacher.position, teacher.join_date);
 
     }
