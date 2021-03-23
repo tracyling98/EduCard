@@ -7,10 +7,10 @@
     tools:context="com.byteforce_crew.educard.boundaries.RegistrationPage">
 
     <TextView
-        android:id="@+id/tvRegister"
+        android:id="@+id/tvRegisterTitle"
         android:layout_width="55dp"
         android:layout_height="30dp"
-        android:text="Register"
+        android:text="@string/register_lbl"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
