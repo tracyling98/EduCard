@@ -1,5 +1,6 @@
 package com.byteforce_crew.educard.boundaries;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,58 +11,104 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.byteforce_crew.educard.entities.User;
 import com.byteforce_crew.educard.testinfo.Credentials;
 import com.byteforce_crew.educard.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginPage extends AppCompatActivity {
 
-    // Some variables tag to the view UIs (private variables)
-    private EditText UsernameField;
-    private EditText PasswordField;
-    private Button LoginButton;
-    private TextView RegisterLink; // User clicks on this to direct to registration
+    // Some variable
+    public boolean valid = false;
 
-    // Some String Variables
-    String Username = "";
-    String Password = "";
+    // User attributes from Firestore: database
+    public static final String PASSWORD = "password";
+    public static final String USER_TYPE = "user_type";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        // Some actions to be done for the login Page
-        UsernameField = findViewById(R.id.etUsername);
-        PasswordField = findViewById(R.id.etPassword);
-        LoginButton = findViewById(R.id.bLogin);
+        // UI element tag to variables
+        EditText UsernameField = findViewById(R.id.etUsername);
+        EditText PasswordField = findViewById(R.id.etPassword);
+        Button loginButton = findViewById(R.id.bLogin);
+        TextView registerLink = findViewById(R.id.tvRegisterLink);
 
-        // When the LoginButton is clicked (onclick listener)
-        LoginButton.setOnClickListener(v -> {
+        /* ================
+         On click listener
+        ===================*/
 
-            // Get string values from the fields
-            Username = UsernameField.getText().toString();
-            Password = PasswordField.getText().toString();
+        // Direct to Register Page
+        registerLink.setOnClickListener(v -> goRegisterPage());
 
-            // Make sure the login fields are not empty
-            if(Username.isEmpty() || Password.isEmpty()){
-                Toast.makeText(LoginPage.this, "Fields cannot be empty!", Toast.LENGTH_SHORT).show();
-            } else {
-                /*  Validate the login fields */
-                // Go to the home page if credentials is correct
-                if(validateCredential(Username, Password)){
-                    Intent homepage_intent = new Intent(LoginPage.this, HomePage.class);
-                    startActivity(homepage_intent);
-                } else {
-                    Toast.makeText(LoginPage.this, "Incorrect credentials!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        // Validate and Direct to Home Page: Pass in variable fields for validation
+        loginButton.setOnClickListener(v -> loginValidate(UsernameField, PasswordField));
     }
 
     // Some methods to be used for the login
-    private boolean validateCredential(String username, String password){
-        Credentials credentials = new Credentials();
-        return username.equals(credentials.adminUser()) && password.equals(credentials.adminPassword());
+    private void verifyCredentials(String username, String password) {
+
+        // Cross check with the credentials in the Firestore
+        CollectionReference userRef = FirebaseFirestore.getInstance().collection("User"); // User Collection
+
+        // Attach listener: check if user document found
+        userRef.document(username).get().addOnSuccessListener(documentSnapshot -> {
+
+            // If the user is found
+            if(documentSnapshot.exists()) {
+
+                // Store found user information from database
+                User user = documentSnapshot.toObject(User.class);
+
+                // User object not null and password correct
+                if (user != null && user.getPassword().equals(password)) {
+
+                    // Go to the home page if credentials is correct (pass in user_type)
+                    goHomePage();
+
+                } else{
+                    Toast.makeText(LoginPage.this, "Incorrect credentials!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        })
+        .addOnFailureListener(e-> Toast.makeText(LoginPage.this, "Error getting data", Toast.LENGTH_SHORT).show());
+
     }
 
+    /*  Validate the login fields */
+    private void loginValidate(EditText usernameField, EditText passwordField){
+
+        // Get string values from the fields
+        String Username = usernameField.getText().toString();
+        String Password = passwordField.getText().toString();
+
+        // login fields string are empty to display message
+        if (Username.isEmpty() || Password.isEmpty()) {
+            Toast.makeText(LoginPage.this, "Fields cannot be empty!", Toast.LENGTH_SHORT).show();
+        } else {
+
+            // Check the credentials
+            verifyCredentials(Username, Password);
+        }
+    }
+
+    private void goHomePage(){
+
+        /* Direct to respective home pages -- by user_type (if any) */
+        // Go to home page
+        startActivity(new Intent(LoginPage.this, HomePage.class));
+    }
+
+    private void goRegisterPage(){
+
+        // Go to register page activity
+        startActivity(new Intent(LoginPage.this, RegistrationPage.class));
+    }
 }
