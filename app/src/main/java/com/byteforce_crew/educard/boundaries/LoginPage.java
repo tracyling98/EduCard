@@ -52,25 +52,25 @@ public class LoginPage extends AppCompatActivity {
         loginButton.setOnClickListener(v -> loginValidate(UsernameField, PasswordField));
     }
 
-    // Some methods to be used for the login
+    // -- Some methods to be used for the login --
     private void verifyCredentials(String username, String password) {
 
-        // Cross check with the credentials in the Firestore
-        CollectionReference userRef = FirebaseFirestore.getInstance().collection("User"); // User Collection
+        // -- Access Firestore Instance from activity --
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Attach listener: check if user document found
-        userRef.document(username).get().addOnSuccessListener(documentSnapshot -> {
+        // -- Attach listener: check if user document found --
+        db.collection("User").document(username).get().addOnSuccessListener(documentSnapshot -> {
 
-            // If the user is found
+            // -- If the user is found --
             if(documentSnapshot.exists()) {
 
-                // Store found user information from database
+                // -- Store found user information from database --
                 User user = documentSnapshot.toObject(User.class);
 
-                // User object not null and password correct
+                // -- User object not null and password correct --
                 if (user != null && user.getPassword().equals(password)) {
 
-                    // Go to the home page if credentials is correct (pass in user_type)
+                    // -- Go to the home page if credentials is correct (pass in user_type) --
                     goHomePage();
 
                 } else{
@@ -82,33 +82,33 @@ public class LoginPage extends AppCompatActivity {
 
     }
 
-    /*  Validate the login fields */
+    /*  -- Validate the login fields -- */
     private void loginValidate(EditText usernameField, EditText passwordField){
 
-        // Get string values from the fields
+        // -- Get string values from the fields --
         String Username = usernameField.getText().toString();
         String Password = passwordField.getText().toString();
 
-        // login fields string are empty to display message
+        // -- login fields string are empty to display message --
         if (Username.isEmpty() || Password.isEmpty()) {
             Toast.makeText(LoginPage.this, "Fields cannot be empty!", Toast.LENGTH_SHORT).show();
         } else {
 
-            // Check the credentials
+            // -- Check the credentials --
             verifyCredentials(Username, Password);
         }
     }
 
     private void goHomePage(){
 
-        /* Direct to respective home pages -- by user_type (if any) */
-        // Go to home page
+        /* -- Direct to respective home pages -- by user_type (if any) -- */
+        // -- Go to home page --
         startActivity(new Intent(LoginPage.this, HomePage.class));
     }
 
     private void goRegisterPage(){
 
-        // Go to register page activity
+        // -- Go to register page activity --
         startActivity(new Intent(LoginPage.this, RegistrationPage.class));
     }
 }
