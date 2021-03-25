@@ -74,8 +74,12 @@ public class LoginPage extends AppCompatActivity {
                     goHomePage();
 
                 } else{
+                    // -- Wrong password
                     Toast.makeText(LoginPage.this, "Incorrect credentials!", Toast.LENGTH_SHORT).show();
                 }
+            } else {
+                // -- Wrong username --
+                Toast.makeText(LoginPage.this, "Incorrect credentials!", Toast.LENGTH_SHORT).show();
             }
         })
         .addOnFailureListener(e-> Toast.makeText(LoginPage.this, "Error getting data", Toast.LENGTH_SHORT).show());
