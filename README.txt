@@ -3,16 +3,20 @@ Functions:
 - View Student/Lecturer Profile
 - Change Profile Details.
 
+Pages:
+ -> Login
+ -> Home
+ -> Register
+
 Users:
-- Administrator (App Staff Members)
-- Moderator (Client: Organisation Staff)
+- Administrator (App Staff Members) ## Not the main focus ##
 - Teacher
 - Student
 
 
 V1.0:
  ~ Login (Teacher, Student)
- ~ Register (Always Moderator)
+ ~ Register (Teacher/Student) ## Not available for other domains ##
 
 V1.1:
- ~ View Profile Card
+
