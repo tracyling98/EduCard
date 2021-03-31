@@ -11,11 +11,23 @@
     <string name="register_lbl">Register</string>
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
-    <string name="org_name">Organisation Name</string>
     <string name="re_password">Re-type Password</string>
+    <string name="country">Country</string>
+    <string-array name="gender">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+    <string-array name="user_type">
+        <item>Teacher</item>
+        <item>Student</item>
+    </string-array>
+
 
     <!-- Home Page -->
     <string name="home_lbl">Home</string>
+    <string name="account">My Account</string>
+    <string name="teacher_modules">View My Modules</string>
+    <string name="student_modules">View Enrolled Modules</string>
 
 
     <!-- Add Student/ Teacher -->
@@ -27,6 +39,9 @@
     <string name="module_code">Module Code</string>
     <string name="module_description">Module Description</string>
 
-    <!-- Class -->
+    <!-- Other Navigation(s) -->
+    <string name="logout">Logout</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
 
 </resources>

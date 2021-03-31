@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EduCard">
         <activity android:name="com.byteforce_crew.educard.boundaries.RegistrationPage"/>
-        <activity android:name="com.byteforce_crew.educard.boundaries.HomePage" />
+        <activity android:name="com.byteforce_crew.educard.boundaries.HomePage"
+            android:theme="@style/Theme.EduCard.NoActionBar" />
         <activity android:name="com.byteforce_crew.educard.boundaries.LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
