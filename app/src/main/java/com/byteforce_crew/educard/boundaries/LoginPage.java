@@ -1,24 +1,20 @@
 package com.byteforce_crew.educard.boundaries;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Parcelable;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.byteforce_crew.educard.entities.User;
-import com.byteforce_crew.educard.testinfo.Credentials;
 import com.byteforce_crew.educard.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.byteforce_crew.educard.enums.Country;
+import com.byteforce_crew.educard.enums.Gender;
+import com.byteforce_crew.educard.enums.User_Type;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginPage extends AppCompatActivity {
@@ -26,9 +22,8 @@ public class LoginPage extends AppCompatActivity {
     // Some variable
     public boolean valid = false;
 
-    // User attributes from Firestore: database
-    public static final String PASSWORD = "password";
-    public static final String USER_TYPE = "user_type";
+    // User attributes for parcelable -- If any --
+    public static final String USER = "user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +31,10 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         // UI element tag to variables
-        EditText UsernameField = findViewById(R.id.etUsername);
-        EditText PasswordField = findViewById(R.id.etPassword);
-        Button loginButton = findViewById(R.id.bLogin);
-        TextView registerLink = findViewById(R.id.tvRegisterLink);
+        EditText UsernameField = findViewById(R.id.etLogin_username);
+        EditText PasswordField = findViewById(R.id.etLogin_password);
+        Button loginButton = findViewById(R.id.btnLogin);
+        TextView registerLink = findViewById(R.id.tvLogin_RegisterLink);
 
         /* ================
          On click listener
@@ -69,9 +64,13 @@ public class LoginPage extends AppCompatActivity {
 
                 // -- User object not null and password correct --
                 if (user != null && user.getPassword().equals(password)) {
+                    user.setUsername(username);
+                    System.out.println(user.toString());
 
                     // -- Go to the home page if credentials is correct (pass in user_type) --
-                    goHomePage();
+                    User user_no_password = new User(user.getUsername(), user.getEmail(), user.getFirstname(), user.getLastname(),
+                            user.getUsertype(), user.getGender(), user.getNationality());
+                    goHomePage(user_no_password);
 
                 } else{
                     // -- Wrong password
@@ -103,11 +102,16 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    private void goHomePage(){
+    private void goHomePage(User user){
 
         /* -- Direct to respective home pages -- by user_type (if any) -- */
+
+        // Using gson + shared preferences to transfer data
+
         // -- Go to home page --
-        startActivity(new Intent(LoginPage.this, HomePage.class));
+        Intent HomeIntent = new Intent(LoginPage.this, HomePage.class);
+        HomeIntent.putExtra(USER, user);
+        startActivity(HomeIntent);
     }
 
     private void goRegisterPage(){

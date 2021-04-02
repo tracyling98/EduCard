@@ -1,5 +1,7 @@
 package com.byteforce_crew.educard.enums;
 
+import androidx.annotation.NonNull;
+
 public enum Grade {
     D("Distinction"),   /* -- [85% - 100%] -- */
     G("Good"),          /* -- [70% -  84%] -- */
@@ -14,8 +16,10 @@ public enum Grade {
         this.name = name;
     }
 
-    /* -- Getter -- */
-    public String getName(){
+    /* -- ToString Method -- */
+    @NonNull
+    @Override
+    public String toString(){
         return name;
     }
 }

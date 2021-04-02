@@ -1,5 +1,8 @@
 package com.byteforce_crew.educard.enums;
 
+import androidx.annotation.NonNull;
+
+/* Will need to double check and add more Countries */
 public enum Country {
     SG("Singapore"),
     MY("Malaysia"),
@@ -24,7 +27,9 @@ public enum Country {
         this.country = country;
     }
 
-    public String getCountry(){
+    @NonNull
+    @Override
+    public String toString(){
         return country;
     }
 
